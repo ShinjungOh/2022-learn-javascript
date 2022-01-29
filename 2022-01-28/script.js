@@ -14,5 +14,3 @@ if(number == 3){
 }
 
 console.log("독립적으로 사용된 콘솔로그")
-
-
