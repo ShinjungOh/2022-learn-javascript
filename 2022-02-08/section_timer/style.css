@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock{
+    border : 1px dotted grey;
+    padding: 15px;
+}
+
+#time{
+    text-align: center;
+}
