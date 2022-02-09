@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.container h3 {
+    text-align: center;
+}
+
+.numbers {
+    border-radius: 15px;
+    border: 1px solid black;
+    display: flex;
+    width: fit-content;
+    padding: 10px;
+    width: 287px;
+    height: 62px;
+    box-sizing: border-box;
+}
+
+.eachnum {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    color: white;
+
+}
+
+.eachnum + .eachnum {
+    margin-left: 5px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 0 0 0;
+}
+
+.btn-container button{
+    width: 70px;
+    height: 20px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    background-color: salmon;
+    text-align: center;
+}
+
+.btn-container button + button {
+    margin-left: 10px;
+}
+
+
+
