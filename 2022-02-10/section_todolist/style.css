@@ -56,3 +56,37 @@ input {
     height: 47px;
     padding: 1px 6px;
 }
+
+li {
+    background-color: #fae161;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    align-items: center;
+    position: relative;
+    width: 190px;
+    height: 40px;
+    margin: 0px 0px 10px;
+    right: -60px;
+    padding-left: 10px;
+}
+
+li.done {
+    background-color: #EAEAEA
+}
+
+
+span {
+    width: 14px;
+    height: 14px;
+    background-color: rgb(234, 234, 234);
+    opacity: 70%;
+    border-radius: 8px;
+    left: -18px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 3px;
+}
