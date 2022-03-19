@@ -6,6 +6,8 @@ request.addEventListener("load", function (){
     const obj = JSON.parse(request.responseText)
     const imageSrc = obj.message
 
+    console.log(request.responseText)
+
     const div = document.querySelector("div")
     div.style.backgroundImage = `url(${imageSrc})`
 })

@@ -39,6 +39,7 @@ function handleTodoDelBtnClick(clickedId){
 
 // handleTodoItemClick 함수
 function handleTodoItemClick(clickedId){
+    console.log(todoArr, clickedId)
     todoArr = todoArr.map(function (aTodo){
         return aTodo.todoId !== clickedId ?
             aTodo : {...aTodo, todoDone: !aTodo.todoDone}
