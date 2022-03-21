@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coordinates</title>
+</head>
+<style>
+    body {
+        background-color: lightgray;
+        /* overflow: hidden; */
+    }
+
+    div {
+        background-color: lightsalmon;
+        width: 250px;
+        height: 250px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        align-content: space-around;
+    }
+
+    .special {
+        background-color: lightgoldenrodyellow;
+    }
+</style>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+
+
+<script>
+    const special = document.querySelector(".special");
+    special.addEventListener("click", (event) => {
+        const rect = special.getBoundingClientRect();
+        console.log(rect);
+        console.log(`client: ${event.clientX}, ${event.clientY}`);
+        console.log(`page: ${event.pageX}, ${event.pageY}`);
+    });
+</script>
+</body>
+</html>
