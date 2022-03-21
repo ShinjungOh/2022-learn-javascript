@@ -24,6 +24,26 @@
     .special {
         background-color: lightgoldenrodyellow;
     }
+
+    .scrollBy {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+
+    .scrollTo {
+        position: fixed;
+        top: 10px;
+        right: 150px;
+    }
+
+    .scrollInto {
+        position: fixed;
+        top: 10px;
+        right: 290px;
+    }
+
+
 </style>
 <body>
     <div></div>
@@ -37,6 +57,9 @@
     <div></div>
     <div></div>
 
+    <button class="scrollBy">Scroll by 100px(y)</button>
+    <button class="scrollTo">Scroll to 100px(y)</button>
+    <button class="scrollInto">Scroll into special</button>
 
 <script>
     const special = document.querySelector(".special");
@@ -46,6 +69,23 @@
         console.log(`client: ${event.clientX}, ${event.clientY}`);
         console.log(`page: ${event.pageX}, ${event.pageY}`);
     });
+
+    const scrollBy = document.querySelector(".scrollBy");
+    scrollBy.addEventListener("click", (event) => {
+        window.scrollBy(0, 100);
+    });
+
+    const scrollTo = document.querySelector(".scrollTo");
+    scrollTo.addEventListener("click", (event) => {
+        window.scrollTo(0, 100);
+    });
+
+    const scrollInto = document.querySelector(".scrollInto");
+    scrollInto.addEventListener("click", (event) => {
+        special.scrollIntoView();
+    });
+
+
 </script>
 </body>
 </html>
