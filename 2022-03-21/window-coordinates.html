@@ -25,6 +25,15 @@
         background-color: lightgoldenrodyellow;
     }
 
+
+    .container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+
+
+    /*
     .scrollBy {
         position: fixed;
         top: 10px;
@@ -42,6 +51,7 @@
         top: 10px;
         right: 290px;
     }
+     */
 
 
 </style>
@@ -57,9 +67,11 @@
     <div></div>
     <div></div>
 
-    <button class="scrollBy">Scroll by 100px(y)</button>
-    <button class="scrollTo">Scroll to 100px(y)</button>
-    <button class="scrollInto">Scroll into special</button>
+    <section class="container">
+        <button class="scrollBy">Scroll by 100px(y)</button>
+        <button class="scrollTo">Scroll to 100px(y)</button>
+        <button class="scrollInto">Scroll into special</button>
+    </section>
 
 <script>
     const special = document.querySelector(".special");
