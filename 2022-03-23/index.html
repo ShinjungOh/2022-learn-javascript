@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        background-color: coral;
+        outline: none;
+        width: 150px;
+        height: 30px;
+        font-size: 15px;
+        color: white;
+        margin-bottom: 30px;
+        cursor: pointer;
+      }
+
+      img {
+        width: 150px;
+      }
+
+    </style>
+  </head>
+  <body>
+  <button class="btn">🐰 토끼를 찾아라 🔎</button>
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="rabbit" src="rabbit.png" alt="rabbit">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+  <img class="carrot" src="carrot.png" alt="carrot">
+
+    <script>
+      const btn = document.querySelector(".btn")
+      const carrot = document.querySelector(".carrot")
+      const rabbit = document.querySelector(".rabbit")
+
+      btn.addEventListener("click", (event) => {
+        rabbit.scrollIntoView({behavior: "smooth", block: "center"});
+      });
+    </script>
+  </body>
+</html>
