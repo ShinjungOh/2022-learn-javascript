@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(213, 218, 218);
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 320px;
+    height: 570px;
+}
+
+.container {
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    border-radius: 10px;
+}
+
+h2 {
+    margin: 10px;
+    color: white;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemList {
+    border: 1px solid black;
+    width: 320px;
+    height: 475px;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.ul {
+    padding: 0;
+}
+
+.itemdivider {
+    width: 90%;
+    height: 1px;
+    background-color: grey;
+}
+
+.deleteBtn {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 20px;
+    position: absolute;
+    right: 405px;
+    cursor: pointer;
+    border-style: none;
+    font-size: 15px;
+}
+
+input {
+    width: 316px;
+    height: 27px;
+    border-style: none;
+    position: absolute;
+    bottom: 475px;
+}
+
+.input {
+    width: 100%;
+    height: 44px;
+    border: 1px none black;
+    background: rgb(238,174,202);
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    border-radius: 0 0 10px 10px;
+}
+
+.inputBox {
+    outline: none;
+    padding: 0 15px;
+    width: 290px;
+}
+
+.plusBtn {
+    border-style: none;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    width: 38px;
+    height: 38px;
+    font-size: 35px;
+    padding: 0;
+    cursor: pointer;
+}
+
