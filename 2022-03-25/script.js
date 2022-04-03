@@ -11,8 +11,9 @@ function onAdd() {
     }
     console.log(text);
 
-    const item = createItem();
+    const item = createItem(text);
     items.appendChild(item);
+    item.scrollIntoView({block: "center"});
     inputBox.value = "";
     inputBox.focus();
 }
@@ -29,8 +30,8 @@ function createItem(text) {
     name.innerText = text;
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.setAttribute("class", "item_delete");
-    deleteBtn.innerHTML = "<button class=\"deleteBtn\">🗑</button>\n"
+    deleteBtn.setAttribute("class", "item_delete deleteBtn");
+    deleteBtn.innerHTML = "🗑"
     deleteBtn.addEventListener("click", () => {
         console.log("delete")
         items.removeChild(itemRow);
@@ -54,4 +55,7 @@ plusBtn.addEventListener("click", () => {
 
 inputBox.addEventListener("keypress", (event) => {
     console.log('key');
+    if (event.key === "Enter") {
+        onAdd();
+    }
 });

@@ -1,9 +1,16 @@
 body {
     background-color: rgb(213, 218, 218);
-    border: 1px solid black;
-    border-radius: 10px;
     width: 320px;
     height: 570px;
+}
+
+main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .container {
@@ -25,7 +32,8 @@ section {
 }
 
 .itemList {
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     width: 320px;
     height: 475px;
     background-color: #f1f1f1;
@@ -34,14 +42,24 @@ section {
     overflow-y: auto;
 }
 
-.ul {
-    padding: 0;
+ul {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+    width: 100%;
 }
 
+.item {
+    padding-left: 7px;
+}
+
+
 .itemdivider {
-    width: 90%;
+    width: 95%;
     height: 1px;
-    background-color: grey;
+    background-color: #b6b3b3;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .deleteBtn {
@@ -49,7 +67,7 @@ section {
     height: 20px;
     margin-bottom: 20px;
     position: absolute;
-    right: 405px;
+    right: 23px;
     cursor: pointer;
     border-style: none;
     font-size: 15px;
@@ -60,7 +78,7 @@ input {
     height: 27px;
     border-style: none;
     position: absolute;
-    bottom: 475px;
+    bottom: 45px;
 }
 
 .input {
