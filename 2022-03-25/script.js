@@ -2,6 +2,12 @@ const deleteBtn = document.querySelector(".deleteBtn");
 const items = document.querySelector(".items");
 const inputBox = document.querySelector(".inputBox");
 const plusBtn = document.querySelector(".plusBtn");
+const form = document.querySelector(".newForm");
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();  //submit이후 브라우저의 자동 로딩 방지
+    onAdd();
+});
 
 function onAdd() {
     const text = inputBox.value;
@@ -60,17 +66,6 @@ function createItem(text) {
 
     return itemRow;
 }
-
-plusBtn.addEventListener("click", () => {
-    onAdd();
-});
-
-inputBox.addEventListener("keypress", (event) => {
-    console.log('key');
-    if (event.key === "Enter") {
-        onAdd();
-    }
-});
 
 items.addEventListener('click', event => {
     const id = event.target.dataset.id;
