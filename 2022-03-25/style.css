@@ -1,7 +1,7 @@
 body {
     background-color: rgb(213, 218, 218);
     width: 320px;
-    height: 570px;
+    height: 470px;
 }
 
 main {
@@ -35,11 +35,12 @@ section {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: 320px;
-    height: 475px;
+    height: 450px;
     background-color: #f1f1f1;
     display: flex;
     justify-content: space-between;
     overflow-y: auto;
+    margin-bottom: 25px;
 }
 
 ul {
