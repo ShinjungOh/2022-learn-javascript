@@ -1,18 +1,22 @@
 const playBtn = document.querySelector('.playBtn');
 const stopBtn = document.querySelector('.stopBtn');
-const count = document.querySelector('.count');
 const timer = document.querySelector('.timer');
-const replay = document.querySelector('.replay')
+const score = document.querySelector('.score');
+const replayBtn = document.querySelector('.replayBtn')
 
 stopBtn.style.display = "none"
 playBtn.addEventListener('click', () => {
     startTimer();
     stopBtn.style.display = "block"
+    playBtn.style.display = "none"
+    console.log('start!')
 });
 
-stopBtn.addEventListener('click', () =>{
+stopBtn.addEventListener('click', () => {
     stop();
     stopBtn.style.display = "none"
+    playBtn.style.display = "block"
+    console.log('stop!')
 });
 
 let currentSecond = 10;
@@ -22,7 +26,7 @@ let time;
 const countDown = () => {
     console.log(currentSecond);
     currentSecond -= 1;
-    count.innerHTML = currentSecond;
+    timer.innerHTML = currentSecond;
     if (currentSecond === 0) {
         isStop = true;
         clearInterval(time);
@@ -32,7 +36,7 @@ const countDown = () => {
 const startTimer = () => {
     if (isStop) {
         isStop = false;
-        count.innerHTML = currentSecond;
+        timer.innerHTML = currentSecond;
         time = setInterval(countDown, 1000);
     }
 };

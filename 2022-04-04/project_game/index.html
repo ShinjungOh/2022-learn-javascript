@@ -6,17 +6,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<sectin>
-    <img src="img/background.png" class="background">
-    <header>
+<section class="game">
+    <header class="game_header">
         <button class="playBtn" value="start">▶</button>
         <button class="stopBtn" value="stop">◼︎︎</button>
-        <div class="count"></div>
-        <input type="button" class="timer">
+        <span class="timer">00:00</span>
+        <span class="score"></span>
     </header>
-    <section>
-    </section>
-    <script src="script.js"></script>
-</sectin>
+    <section class="game_field"></section>
+</section>
+<section class="contents">
+</section>
+<section class="pop-up pop-up--hide">
+    <button class="replayBtn">⟳</button>
+    <span class="pop-up_message">
+        <div class="win">YOU WIN🎊</div>
+    </span>
+</section>
+<script src="script.js"></script>
 </body>
 </html>
