@@ -5,21 +5,36 @@ const score = document.querySelector('.score');
 const replayBtn = document.querySelector('.replayBtn');
 const field = document.querySelector('.game_field');
 const fieldRect = field.getBoundingClientRect();
+const popup = document.querySelector('.pop-up');
+const carrot = document.querySelector('.carrot');
+const bug = document.querySelector('.bug');
+
+let gameScore = 0;
+let gameTimer = undefined;
 
 stopBtn.style.display = "none"
 playBtn.addEventListener('click', () => {
     startTimer();
+    showTimerAndScore();
     stopBtn.style.display = "block"
     playBtn.style.display = "none"
     console.log('start!')
+    initGame();
 });
 
 stopBtn.addEventListener('click', () => {
     stop();
-    stopBtn.style.display = "none"
-    playBtn.style.display = "block"
-    console.log('stop!')
+    stopBtn.style.display = "none";
+    playBtn.style.display = "block";
+    console.log('stop!');
 });
+
+askRetry();
+
+function showTimerAndScore() {
+    timer.style.visibility = 'visible';
+    score.style.visibility = 'visible';
+}
 
 let currentSecond = 10;
 let isStop = true;
@@ -28,7 +43,7 @@ let time;
 const countDown = () => {
     console.log(`${currentSecond}초`);
     currentSecond -= 1;
-    timer.innerHTML = currentSecond;
+    timer.innerHTML = `0:${currentSecond}`;
     if (currentSecond === 0) {
         isStop = true;
         clearInterval(time);
@@ -41,7 +56,7 @@ const countDown = () => {
 const startTimer = () => {
     if (isStop) {
         isStop = false;
-        timer.innerHTML = currentSecond;
+        timer.innerHTML = `0:${currentSecond}`;
         time = setInterval(countDown, 1000);
     }
 };
@@ -53,11 +68,16 @@ const stop = () => {
 
 
 const carrotSize = 80;
+const carrotCount = 5;
+const bugCount = 5;
+
 
 function initGame() {
     //console.log(fieldRect);
-    createGameItem('carrot', '5', 'img/carrot.png');
-    createGameItem('bug', '5', 'img/bug.png');
+    field.innerHTML = '';
+    score.innerText = carrotCount;
+    createGameItem('carrot', carrotCount, 'img/carrot.png');
+    createGameItem('bug', bugCount, 'img/bug.png');
 }
 
 function createGameItem(className, count, imgPath) {
@@ -82,5 +102,46 @@ function randomNum(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-initGame();
+function askRetry() {
+    stopBtn.addEventListener('click', () => {
+        popup.style.visibility = "block";
+    })
+}
 
+field.addEventListener('click', onFieldClick);
+
+function onFieldClick(event) {
+    if (isStop) {
+        return;
+    }
+    const target = event.target;
+    if (target.matches('.carrot')) {
+        //console.log('carrot');
+        target.remove();
+        gameScore++;
+        updateScore();
+    } else if (target.matches('.bug')) {
+        //console.log('bug');
+        stop();
+    }
+}
+
+function updateScore() {
+    score.innerText = carrotCount - gameScore;
+}
+
+function showPopup() {
+
+}
+
+
+replayBtn.addEventListener('click', () => {
+    retry();
+});
+
+function retry() {
+    console.log('retry');
+    startTimer();
+    showTimerAndScore();
+    initGame();
+}

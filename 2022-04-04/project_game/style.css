@@ -61,6 +61,7 @@ button {
     font-size: 32px;
     text-align: center;
     margin-bottom: 6px;
+    visibility: hidden;
 }
 
 .score {
@@ -72,6 +73,7 @@ button {
     color: white;
     font-size: 45px;
     text-align: center;
+    visibility: hidden;
 }
 
 .pop-up {
@@ -86,13 +88,14 @@ button {
     display: block;
     margin: auto;
     transform: translateY(-120%);
+    visibility: hidden;
 }
 
-pop-up--hide {
+.pop-up--hide {
     display: none;
 }
 
-.replayBtn{
+.replayBtn {
     font-size: 50px;
     padding: 0 0 0 0;
     background-color: #f1d3b0;
@@ -118,7 +121,22 @@ pop-up--hide {
     padding-top: 20px;
 }
 
+.askReplay {
+    position: relative;
+    padding-top: 20px;
+}
+
 body {
     text-align: center;
     background-color: black;
+}
+
+.bug {
+    transition: transform 300ms ease-in;
+
+}
+
+.carrot {
+    transition: transform 300ms ease-in;
+
 }
