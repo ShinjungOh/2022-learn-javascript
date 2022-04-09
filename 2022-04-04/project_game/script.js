@@ -1,3 +1,6 @@
+'use strict';
+import * as sound from './sound.js';
+
 const playBtn = document.querySelector('.playBtn');
 const stopBtn = document.querySelector('.stopBtn');
 const timer = document.querySelector('.timer');
@@ -12,12 +15,6 @@ const win = document.querySelector('.win');
 const lose = document.querySelector('.lose');
 const askReplay = document.querySelector('.askReplay');
 
-const carrotSound = new Audio('./sound/carrot_pull.mp3')
-const bugSound = new Audio('./sound/bug_pull.mp3')
-const bgSound = new Audio('./sound/bg.mp3')
-const winSound = new Audio('./sound/game_win.mp3')
-const alertSound = new Audio('./sound/alert.wav')
-
 let gameScore = 0;
 let gameTimer = undefined;
 
@@ -30,27 +27,19 @@ playBtn.addEventListener('click', () => {
     popup.style.visibility = "hidden";
     console.log('start!')
     initGame();
-    playSound(bgSound);
+    sound.playBg();
 });
 
 stopBtn.addEventListener('click', () => {
     stop();
-    stopSound(bgSound);
-    playSound(alertSound);
+    sound.stopBg();
+    sound.playAlert();
     stopBtn.style.visibility = "hidden";
     playBtn.style.visibility = "visible";
     popup.style.visibility = "visible";
     console.log('stop!');
 });
 
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
-}
-
-function stopSound(sound) {
-    sound.pause();
-}
 
 function showTimerAndScore() {
     timer.style.visibility = 'visible';
@@ -85,7 +74,7 @@ const startTimer = () => {
 const stop = () => {
     clearInterval(time);
     isStop = true;
-    stopSound(bgSound);
+    sound.stopBg();
 };
 
 
@@ -137,11 +126,11 @@ function onFieldClick(event) {
         target.remove();
         gameScore++;
         updateScore();
-        playSound(carrotSound);
+        sound.playCarrot();
         if(carrotCount - gameScore === 0) {
             //console.log('0이다');
             stop();
-            playSound(winSound);
+            sound.playWin();
             stopBtn.style.visibility = "hidden";
             playBtn.style.visibility = "hidden";
             popup.style.visibility = "visible";
@@ -152,7 +141,7 @@ function onFieldClick(event) {
         }
     } else if (target.matches('.bug')) {
         //console.log('bug');
-        playSound(bugSound);
+        sound.playBug();
         stopBtn.style.visibility = "hidden";
         playBtn.style.visibility = "hidden";
         popup.style.visibility = "visible";
@@ -178,7 +167,7 @@ function askRetry() {
 replayBtn.addEventListener('click', () => {
     retry();
     askRetry();
-    playSound(bgSound);
+    sound.playBg();
     playBtn.style.display = "none";
     stopBtn.style.display = "block";
 });
