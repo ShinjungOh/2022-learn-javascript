@@ -8,6 +8,9 @@ const fieldRect = field.getBoundingClientRect();
 const popup = document.querySelector('.pop-up');
 const carrot = document.querySelector('.carrot');
 const bug = document.querySelector('.bug');
+const win = document.querySelector('.win');
+const lose = document.querySelector('.lose');
+const askReplay = document.querySelector('.askReplay');
 
 let gameScore = 0;
 let gameTimer = undefined;
@@ -18,18 +21,18 @@ playBtn.addEventListener('click', () => {
     showTimerAndScore();
     stopBtn.style.display = "block"
     playBtn.style.display = "none"
+    popup.style.visibility = "hidden";
     console.log('start!')
     initGame();
 });
 
 stopBtn.addEventListener('click', () => {
     stop();
-    stopBtn.style.display = "none";
-    playBtn.style.display = "block";
+    stopBtn.style.visibility = "hidden";
+    playBtn.style.visibility = "visible";
+    popup.style.visibility = "visible";
     console.log('stop!');
 });
-
-askRetry();
 
 function showTimerAndScore() {
     timer.style.visibility = 'visible';
@@ -102,12 +105,6 @@ function randomNum(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function askRetry() {
-    stopBtn.addEventListener('click', () => {
-        popup.style.visibility = "block";
-    })
-}
-
 field.addEventListener('click', onFieldClick);
 
 function onFieldClick(event) {
@@ -120,8 +117,25 @@ function onFieldClick(event) {
         target.remove();
         gameScore++;
         updateScore();
+        if(carrotCount - gameScore === 0) {
+            //console.log('0이다');
+            stop();
+            stopBtn.style.visibility = "hidden";
+            playBtn.style.visibility = "hidden";
+            popup.style.visibility = "visible";
+            win.style.display = 'block';
+            lose.style.display = 'none';
+            askReplay.style.display = "none";
+            clearInterval(time);
+        }
     } else if (target.matches('.bug')) {
         //console.log('bug');
+        stopBtn.style.visibility = "hidden";
+        playBtn.style.visibility = "hidden";
+        popup.style.visibility = "visible";
+        win.style.display = 'none';
+        lose.style.display = 'block';
+        askReplay.style.display = "none";
         stop();
     }
 }
@@ -130,18 +144,28 @@ function updateScore() {
     score.innerText = carrotCount - gameScore;
 }
 
-function showPopup() {
-
+function askRetry() {
+    stopBtn.addEventListener('click', () => {
+        popup.style.visibility = "visible";
+    })
 }
-
 
 replayBtn.addEventListener('click', () => {
     retry();
+    askRetry();
+    playBtn.style.display = "none";
+    stopBtn.style.display = "block";
 });
 
 function retry() {
     console.log('retry');
+    //stop();
     startTimer();
     showTimerAndScore();
     initGame();
+    popup.style.visibility = "hidden";
+    stopBtn.style.visibility = "visible";
+    playBtn.style.visibility = "hidden";
+    win.style.display = 'none';
+    lose.style.display = 'none';
 }
