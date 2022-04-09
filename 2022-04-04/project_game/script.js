@@ -12,6 +12,12 @@ const win = document.querySelector('.win');
 const lose = document.querySelector('.lose');
 const askReplay = document.querySelector('.askReplay');
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3')
+const bugSound = new Audio('./sound/bug_pull.mp3')
+const bgSound = new Audio('./sound/bg.mp3')
+const winSound = new Audio('./sound/game_win.mp3')
+const alertSound = new Audio('./sound/alert.wav')
+
 let gameScore = 0;
 let gameTimer = undefined;
 
@@ -24,15 +30,27 @@ playBtn.addEventListener('click', () => {
     popup.style.visibility = "hidden";
     console.log('start!')
     initGame();
+    playSound(bgSound);
 });
 
 stopBtn.addEventListener('click', () => {
     stop();
+    stopSound(bgSound);
+    playSound(alertSound);
     stopBtn.style.visibility = "hidden";
     playBtn.style.visibility = "visible";
     popup.style.visibility = "visible";
     console.log('stop!');
 });
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
+}
 
 function showTimerAndScore() {
     timer.style.visibility = 'visible';
@@ -67,6 +85,7 @@ const startTimer = () => {
 const stop = () => {
     clearInterval(time);
     isStop = true;
+    stopSound(bgSound);
 };
 
 
@@ -77,6 +96,7 @@ const bugCount = 5;
 
 function initGame() {
     //console.log(fieldRect);
+    gameScore = 0;
     field.innerHTML = '';
     score.innerText = carrotCount;
     createGameItem('carrot', carrotCount, 'img/carrot.png');
@@ -117,9 +137,11 @@ function onFieldClick(event) {
         target.remove();
         gameScore++;
         updateScore();
+        playSound(carrotSound);
         if(carrotCount - gameScore === 0) {
             //console.log('0이다');
             stop();
+            playSound(winSound);
             stopBtn.style.visibility = "hidden";
             playBtn.style.visibility = "hidden";
             popup.style.visibility = "visible";
@@ -130,6 +152,7 @@ function onFieldClick(event) {
         }
     } else if (target.matches('.bug')) {
         //console.log('bug');
+        playSound(bugSound);
         stopBtn.style.visibility = "hidden";
         playBtn.style.visibility = "hidden";
         popup.style.visibility = "visible";
@@ -147,12 +170,15 @@ function updateScore() {
 function askRetry() {
     stopBtn.addEventListener('click', () => {
         popup.style.visibility = "visible";
+        popup.style.display = "block";
+        askReplay.style.display = "block";
     })
 }
 
 replayBtn.addEventListener('click', () => {
     retry();
     askRetry();
+    playSound(bgSound);
     playBtn.style.display = "none";
     stopBtn.style.display = "block";
 });
