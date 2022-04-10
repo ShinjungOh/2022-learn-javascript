@@ -46,7 +46,8 @@ function showTimerAndScore() {
     score.style.visibility = 'visible';
 }
 
-let currentSecond = 10;
+const initSecond = 10;
+let currentSecond = initSecond;
 let isStop = true;
 let time;
 
@@ -62,6 +63,10 @@ const countDown = () => {
         playBtn.style.display = "block"
     }
 };
+
+const initTimer = () => {
+    currentSecond = initSecond;
+}
 
 const startTimer = () => {
     if (isStop) {
@@ -173,6 +178,7 @@ replayBtn.addEventListener('click', () => {
 });
 
 function retry() {
+    initTimer();
     console.log('retry');
     //stop();
     startTimer();
