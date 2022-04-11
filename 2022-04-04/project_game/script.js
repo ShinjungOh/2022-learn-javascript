@@ -52,7 +52,7 @@ let isStop = true;
 let time;
 
 const countDown = () => {
-    console.log(`${currentSecond}초`);
+    //console.log(`${currentSecond}초`);
     currentSecond -= 1;
     timer.innerHTML = `0:${currentSecond}`;
     if (currentSecond === 0) {
@@ -61,6 +61,12 @@ const countDown = () => {
         console.log('0!');
         stopBtn.style.display = "none"
         playBtn.style.display = "block"
+        popup.style.visibility = "visible";
+        win.style.display = 'none';
+        lose.style.display = 'block';
+        askReplay.style.display = "none";
+        sound.stopBg();
+        sound.playBug();
     }
 };
 
