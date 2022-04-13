@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            font-size: 40px;
+        }
+
+        button:hover {
+            background-color: khaki;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>Request Animation Frame</button>
+<script>
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+            document.body.style.backgroundColor = 'red';
+        });
+        requestAnimationFrame(() => {
+            document.body.style.backgroundColor = 'orange';
+        });
+        requestAnimationFrame(() => {
+            document.body.style.backgroundColor = 'beige';  //마지막 코드가 적용됨
+        });
+    });  //이벤트 루프가 UI 업데이트를 하기 위해 render에 들린다
+         //render 업데이트가 일어나기 전에 request Animation Frame 콜백 큐가 실행된다
+</script>
+</body>
+</html>
