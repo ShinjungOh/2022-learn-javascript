@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            font-size: 40px;
+        }
+
+        button:hover {
+            background-color: lightgoldenrodyellow;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>Continue with promise</button>
+<script>
+  function handleClick() {
+    console.log('handleClick');
+    Promise.resolve(0)
+            .then(() => {
+              console.log('then');
+              handleClick();  //브라우저가 반응하지 않는 문제 발생할 수 있다
+            });
+  }
+
+  const button = document.querySelector('button');
+  button.addEventListener('click', () => {
+    handleClick();
+  });
+</script>
+</body>
+</html>
