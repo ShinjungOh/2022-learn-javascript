@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            font-size: 40px;
+        }
+
+        button:hover {
+            background-color: goldenrod;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>Continue with setTimeout</button>
+<script>
+    function handleClick() {
+        console.log('handleClick');
+        setTimeout(() => {
+            console.log('setTimeout');
+            handleClick();
+        }, 0);
+    }
+
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        handleClick();
+        //이벤트 루프는 가끔 render을 거치기 때문에, 다양한 이벤트를 동시에 처리할 수 있다
+    });
+</script>
+</body>
+</html>
