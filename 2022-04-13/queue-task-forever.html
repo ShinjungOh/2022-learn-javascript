@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            font-size: 60px;
+        }
+
+        button:hover {
+            background-color: gold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>While(true)</button>
+<script>
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        while (true) {
+            //repeat
+            //콜 스택이 끝나지 않는 상태 -> 브라우저에 업데이트 되지 않고 이벤트 처라기 발생하지 않음
+            //콜백은 간단하게, loop, while, for, 재귀함수 사용시 주의
+        }
+    });
+</script>
+</body>
+</html>
